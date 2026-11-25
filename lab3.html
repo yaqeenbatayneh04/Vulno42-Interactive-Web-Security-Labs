@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: Client-Side Prototype Pollution - Vulno42</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">🛡️ Vulno42</a>
+        <a href="index.html" class="back-home-btn">← Back to Home</a>
+    </nav>
+
+    <main class="lab-container">
+
+        <!-- Lab Header -->
+        <header class="lab-header">
+            <h1>Client-Side Prototype Pollution</h1>
+            <div class="lab-badges">
+                <!-- TEAM: Replace '#' with the actual article/documentation links -->
+                <a href="https://wstg.owasp.org/latest/11-Injection/21-Prototype_Pollution/" target="_blank" rel="noopener noreferrer" class="badge lab-badge-link">OWASP WASTG - Prototype Pollution ↗</a>
+                <a href="https://cwe.mitre.org/data/definitions/1321.html" target="_blank" rel="noopener noreferrer" class="badge lab-badge-link">CWE-1321 Improperly Controlled Modification of Object Prototype Attributes ↗</a>
+            </div>
+        </header>
+
+        <!-- Section 1: Theory (What & Why) -->
+        <article class="article-content">
+            <section class="article-section">
+                <h2>1. What is it?</h2>
+                <p>Client-side prototype pollution is a JavaScript vulnerability where an attacker modifies an object's prototype (usually Object.prototype) through unsafe handling of user-controlled input.</p>
+            </section>
+
+            <section class="article-section">
+                <h2>2. Why it matters?</h2>
+                <p>Prototype pollution allows attackers to manipulate inherited JavaScript object properties, potentially altering application behavior and bypassing security checks. It can lead to DOM-based XSS, unauthorized actions, or sensitive data exposure. In 2020, a vulnerability reported on HackerOne demonstrated how prototype pollution could be exploited to achieve XSS, allowing attackers to execute malicious JavaScript in a user's browser.</p>
+            </section>
+        </article>
+
+        <!-- Section 2: The Interactive Sandbox -->
+        <div class="sandbox-area">
+
+            <!-- Toggle Switch (Vulnerable / Fixed) -->
+            <div class="toggle-container">
+                <button id="vuln-btn" class="toggle-btn active-vuln">🔴 Vulnerable Mode</button>
+                <button id="fixed-btn" class="toggle-btn">🟢 Fixed Mode</button>
+            </div>
+
+            <div class="code-and-action">
+                <!-- Code Viewer (filled by lab3.js) -->
+                <div class="code-box">
+                    <h2>The Code</h2>
+                    <pre><code id="code-display"></code></pre>
+                    <p class="code-explanation" id="code-explanation">
+                        <strong>Why it fails:</strong> merge() recursively copies every key, including __proto__ and constructor.prototype.
+                    </p>
+                </div>
+
+                <!-- Action Area (Payloads & Output) -->
+                <div class="action-box">
+                    <h2>3. Try it (Payloads)</h2>
+                    <p class="section-intro">Click a button to test the attack:</p>
+                    <div class="payload-buttons">
+                        <button class="payload-btn" onclick="runPayload('Payload 1')">__proto__ (privilege escalation)</button>
+                        <button class="payload-btn" onclick="runPayload('Payload 2')">Constructor.prototype (DOM XSS)</button>
+                    </div>
+
+                    <div class="custom-payload">
+                        <h2>Write your own payload</h2>
+                        <p class="hint">Enter a JSON object, then click Run (or press Ctrl+Enter). Try keys like <code>__proto__</code> or <code>constructor.prototype</code>.</p>
+                        <textarea id="payload-input" spellcheck="false" placeholder='{"__proto__": {"role": "admin"}}'></textarea>
+                        <button id="run-custom-btn" class="payload-btn">▶ Run Custom Payload</button>
+                    </div>
+
+                    <h2>Simulation Result</h2>
+                    <div id="simulation-output" class="output-box">
+                        Waiting for action...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Sources -->
+        <div class="sources-section">
+            <h3>Sources</h3>
+            <ul>
+                <!-- TEAM: Put your links here -->
+                <li><a href="https://portswigger.net/web-security/prototype-pollution/client-side#finding-client-side-prototype-pollution-sources-manually" target="_blank" rel="noopener noreferrer">Client-side prototype pollution vulnerabilities</a></li>
+                <li><a href="https://portswigger.net/web-security/prototype-pollution/client-side/lab-prototype-pollution-dom-xss-via-client-side-prototype-pollution" target="_blank" rel="noopener noreferrer">DOM XSS via client-side prototype pollution</a></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-main"><strong>Vulno42</strong> &mdash; 42 Advanced Digital Skills Program (Cybersecurity Track)</p>
+        <p class="footer-sub">Crown Prince Foundation &amp; Abdulla Al Ghurair Foundation &bull; Powered by 42 Irbid &bull; November 2026</p>
+    </footer>
+
+    <!-- Fixed: script name now matches the uploaded file (lab3.js) -->
+    <script src="lab3.js"></script>
+</body>
+</html>

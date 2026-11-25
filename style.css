@@ -1,0 +1,1196 @@
+:root {
+    --bg-dark: #071B2B;
+    --card-bg: #0c263b;
+    --primary-teal: #167D8D;
+    --accent-ice: #B9E4E8;
+    --text-light: #EEEEEE;
+    --text-muted: #a9c5d3;
+    --danger-red: #FF4B4B;
+    --safe-green: #00E676;
+}
+
+/* Hide scrollbar across browsers while keeping scroll functionality */
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Accessible focus outlines across interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent-ice);
+    outline-offset: 2px;
+}
+
+/* Top Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 5%;
+    background-color: rgba(7, 27, 43, 0.95);
+    border-bottom: 1px solid rgba(185, 228, 232, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Logo acting as Home button */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-ice);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--text-light);
+}
+
+/* Visible Back to Home Button on Lab Pages */
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    border: 1px solid var(--primary-teal);
+    background-color: rgba(22, 125, 141, 0.15);
+    color: var(--accent-ice);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.back-home-btn:hover {
+    border-color: var(--accent-ice);
+    color: var(--text-light);
+    background-color: rgba(22, 125, 141, 0.35);
+    box-shadow: 0 0 12px rgba(185, 228, 232, 0.45);
+    transform: translateX(-2px);
+}
+
+.shield-icon {
+    font-size: 1.4rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1.5rem 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Clean eyebrow heading for homepage (no button appearance) */
+.hero .badge {
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    color: var(--primary-teal);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.hero p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Cards Grid */
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 1rem auto 4rem;
+    flex: 1;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 2rem;
+}
+
+/* Interactive Card Design */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(185, 228, 232, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-ice);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+.abbr-badge {
+    background-color: var(--primary-teal);
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+
+.difficulty-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.difficulty-tag.easy {
+    background-color: rgba(0, 230, 118, 0.15);
+    color: var(--safe-green);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.difficulty-tag.medium {
+    background-color: rgba(185, 228, 232, 0.15);
+    color: var(--accent-ice);
+}
+
+.difficulty-tag.hard {
+    background-color: rgba(255, 75, 75, 0.15);
+    color: var(--danger-red);
+    border: 1px solid rgba(255, 75, 75, 0.3);
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--accent-ice);
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(185, 228, 232, 0.1);
+    font-weight: 600;
+    color: var(--accent-ice);
+    font-size: 0.95rem;
+}
+
+.card .arrow {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.card:hover .arrow {
+    transform: translateX(6px);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(185, 228, 232, 0.1);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ================= Lab Pages Shared Styles ================= */
+
+.lab-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2.5rem auto 3rem;
+    flex: 1;
+}
+
+.lab-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.lab-header h1 {
+    color: var(--text-light);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.lab-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Clickable Lab Badges with Hover Border Glow */
+.lab-badge-link,
+.lab-badges .badge,
+.badges .badge {
+    display: inline-block;
+    max-width: 100%;
+    background-color: rgba(22, 125, 141, 0.15);
+    color: var(--accent-ice);
+    border: 1px solid var(--primary-teal);
+    padding: 0.45rem 1.15rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    overflow-wrap: break-word;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lab-badge-link:hover,
+.lab-badges .badge:hover,
+.badges .badge:hover {
+    border-color: var(--accent-ice);
+    color: var(--text-light);
+    background-color: rgba(22, 125, 141, 0.3);
+    box-shadow: 0 0 14px rgba(185, 228, 232, 0.55);
+    transform: translateY(-2px);
+}
+
+/* Theory Section */
+.article-content {
+    max-width: 850px;
+    margin: 0 auto 3rem auto;
+    padding: 0 1rem;
+}
+
+.article-section {
+    margin-bottom: 2rem;
+}
+
+.article-section:last-child {
+    margin-bottom: 0;
+}
+
+.article-section h2 {
+    color: var(--accent-ice);
+    font-size: 1.45rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.article-section p {
+    color: var(--text-light);
+    font-size: 1.08rem;
+    line-height: 1.8;
+    opacity: 0.92;
+}
+
+/* Interactive Sandbox Area */
+.sandbox-area {
+    background-color: rgba(7, 27, 43, 0.5);
+    border: 1px solid var(--primary-teal);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Unified Mode Toggle Buttons (Vulnerable & Fixed) */
+.toggle-container,
+.mode-toggle-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.toggle-btn,
+.mode-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: rgba(12, 38, 59, 0.8);
+    border: 2px solid var(--primary-teal);
+    color: var(--text-light);
+    padding: 0.65rem 1.6rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.toggle-btn:hover,
+.mode-btn:hover {
+    border-color: var(--accent-ice);
+    box-shadow: 0 0 15px rgba(185, 228, 232, 0.55);
+    transform: scale(1.05);
+}
+
+.active-vuln,
+.active-fixed,
+.mode-btn.active {
+    background-color: rgba(22, 125, 141, 0.35);
+    border-color: var(--accent-ice);
+    color: var(--text-light);
+    box-shadow: 0 0 12px rgba(185, 228, 232, 0.35);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.red-dot { background-color: var(--danger-red); }
+.green-dot { background-color: var(--safe-green); }
+
+/* Code & Action Split Layout */
+.code-and-action {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.code-box,
+.action-box {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(185, 228, 232, 0.14);
+    padding: 1.75rem;
+    border-radius: 10px;
+    min-width: 0;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Unified Vertical Rhythm for Headings & Intro Text Inside Sandbox Panels */
+.code-box h2,
+.action-box h2 {
+    color: var(--accent-ice);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.code-box > h2:first-child,
+.action-box > h2:first-child,
+.custom-payload > h2:first-child,
+.bt-section > h2:first-child {
+    margin-top: 0;
+}
+
+.section-intro,
+.action-box > p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    line-height: 1.55;
+    margin-bottom: 0.9rem;
+}
+
+/* Code Block Styling */
+pre {
+    background-color: #030d14;
+    border: 1px solid rgba(185, 228, 232, 0.12);
+    padding: 1.1rem;
+    border-radius: 8px;
+    max-width: 100%;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #e6e6e6;
+    margin-bottom: 1rem;
+}
+
+/* Line Highlighting */
+.highlight-line {
+    display: block;
+    padding: 0.2rem 0.35rem;
+    font-weight: bold;
+}
+
+.vuln-line {
+    background-color: rgba(255, 75, 75, 0.2);
+    border-left: 4px solid var(--danger-red);
+    color: #ff9999;
+}
+
+.fixed-line {
+    background-color: rgba(0, 230, 118, 0.2);
+    border-left: 4px solid var(--safe-green);
+    color: #99ff99;
+}
+
+.code-explanation {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    overflow-wrap: break-word;
+}
+
+/* Payload Buttons */
+.payload-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.payload-btn {
+    width: 100%;
+    background-color: var(--primary-teal);
+    color: var(--text-light);
+    border: 1px solid transparent;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    overflow-wrap: break-word;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.payload-btn:hover {
+    background-color: #1a96a8;
+    border-color: rgba(185, 228, 232, 0.5);
+}
+
+.payload-btn:active {
+    transform: translateY(1px);
+}
+
+/* Output Box */
+.output-box {
+    background-color: #030d14;
+    border: 1px dashed rgba(185, 228, 232, 0.4);
+    padding: 1rem 1.1rem;
+    border-radius: 8px;
+    min-height: 100px;
+    font-family: monospace;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    overflow-wrap: break-word;
+}
+
+.attack-success,
+.output-vuln {
+    color: var(--danger-red);
+    border-color: rgba(255, 75, 75, 0.55);
+}
+
+.attack-blocked,
+.output-fixed {
+    color: var(--safe-green);
+    border-color: rgba(0, 230, 118, 0.5);
+}
+
+/* Sources Section */
+.sources-section {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(185, 228, 232, 0.14);
+    padding: 1.6rem 1.75rem;
+    border-radius: 10px;
+    overflow-wrap: break-word;
+}
+
+.sources-section h3 {
+    color: var(--accent-ice);
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+}
+
+.sources-section ul {
+    padding-left: 1.3rem;
+}
+
+.sources-section li {
+    margin-bottom: 0.45rem;
+}
+
+.sources-section li:last-child {
+    margin-bottom: 0;
+}
+
+.sources-section a {
+    color: var(--primary-teal);
+    text-decoration: none;
+    overflow-wrap: break-word;
+}
+
+.sources-section a:hover {
+    color: var(--accent-ice);
+    text-decoration: underline;
+}
+
+/* ================= Lab 1 (Open Redirect) Styles ================= */
+
+.redirect-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+}
+
+.redirect-form label {
+    color: var(--accent-ice);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.redirect-form input {
+    width: 100%;
+    padding: 0.8rem 0.95rem;
+    border-radius: 8px;
+    border: 1px solid var(--primary-teal);
+    background-color: #030d14;
+    color: var(--text-light);
+    font-family: monospace;
+    font-size: 0.92rem;
+}
+
+.redirect-form input:focus {
+    outline: none;
+    border-color: var(--accent-ice);
+}
+
+.lab1-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+}
+
+.lab1-actions button {
+    flex: 1;
+    min-width: 140px;
+}
+
+.browser-preview {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--primary-teal);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #030d14;
+}
+
+.browser-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1rem;
+    background-color: #102e43;
+    border-bottom: 1px solid var(--primary-teal);
+}
+
+.browser-dots {
+    color: var(--accent-ice);
+    white-space: nowrap;
+}
+
+.browser-address {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #d7f2f4;
+}
+
+.browser-content {
+    padding: 1.15rem;
+    min-height: 105px;
+}
+
+.browser-content h3 {
+    margin-bottom: 0.45rem;
+    font-size: 1rem;
+    color: var(--accent-ice);
+}
+
+.browser-content p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.trace-heading {
+    margin-top: 1.5rem;
+}
+
+.trace-list {
+    margin: 0 0 0.9rem;
+    padding-left: 1.4rem;
+    line-height: 1.75;
+    font-size: 0.92rem;
+    color: var(--text-light);
+}
+
+.trace-list li {
+    overflow-wrap: anywhere;
+    margin-bottom: 0.25rem;
+}
+
+.safe-note {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+/* ================= Lab 2 (ReDoS) Custom Layout ================= */
+
+.inner-test-page {
+    background-color: rgba(3, 13, 20, 0.45);
+    border: 1px solid rgba(185, 228, 232, 0.2);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+}
+
+.test-page-title,
+.why-fails-title {
+    color: #d4a373 !important;
+    font-size: 1.05rem;
+    margin-bottom: 0.85rem;
+}
+
+.test-form label {
+    display: block;
+    color: var(--text-light);
+    font-size: 0.93rem;
+    font-weight: 600;
+    margin-bottom: 0.55rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.65rem;
+    width: 100%;
+}
+
+.input-group input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    padding: 0.72rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--primary-teal);
+    background-color: #030d14;
+    color: var(--text-light);
+    font-family: monospace;
+    font-size: 0.92rem;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-ice);
+}
+
+.submit-btn {
+    background-color: var(--primary-teal);
+    color: var(--text-light);
+    border: 1px solid transparent;
+    padding: 0.72rem 1.35rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.93rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #1a96a8;
+    border-color: rgba(185, 228, 232, 0.5);
+}
+
+/* Backtracking Visualizer Section */
+.bt-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(185, 228, 232, 0.14);
+}
+
+.bt-controls {
+    margin-bottom: 0.9rem;
+}
+
+.bt-box {
+    min-height: 120px;
+    overflow-x: auto;
+}
+
+.bt-note {
+    font-size: 0.88rem;
+    color: var(--accent-ice);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.bt-edge {
+    stroke: rgba(185, 228, 232, 0.45);
+    stroke-width: 1.5;
+}
+
+.bt-node rect {
+    fill: var(--card-bg);
+    stroke: var(--primary-teal);
+    stroke-width: 1.5;
+}
+
+.bt-node text {
+    fill: var(--text-light);
+    font-size: 12px;
+    font-family: monospace;
+}
+
+.bt-node.bt-fail rect {
+    fill: rgba(255, 75, 75, 0.2);
+    stroke: var(--danger-red);
+}
+
+.bt-node.bt-ok rect {
+    fill: rgba(0, 230, 118, 0.2);
+    stroke: var(--safe-green);
+}
+
+.bt-node.bt-back rect {
+    fill: rgba(255, 193, 7, 0.22);
+    stroke: #ffc107;
+}
+
+/* ================= Lab 3 (Prototype Pollution) Custom Payload ================= */
+
+.custom-payload {
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(185, 228, 232, 0.14);
+}
+
+.custom-payload .hint {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0.8rem;
+}
+
+.custom-payload textarea {
+    width: 100%;
+    min-height: 96px;
+    padding: 0.8rem 0.95rem;
+    margin-bottom: 0.75rem;
+    background-color: #030d14;
+    color: #d6f1f5;
+    border: 1px solid var(--primary-teal);
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    resize: vertical;
+    display: block;
+}
+
+.custom-payload textarea:focus {
+    outline: none;
+    border-color: var(--accent-ice);
+}
+
+/* ================= Responsive Breakpoints ================= */
+@media (max-width: 900px) {
+    .theory-grid,
+    .code-and-action,
+    .lab-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .lab-container {
+        width: 94%;
+        margin: 1.5rem auto 2.5rem;
+    }
+
+    .lab-header h1 {
+        font-size: 1.65rem;
+    }
+
+    .sandbox-area {
+        padding: 1.25rem;
+    }
+
+    .code-box,
+    .action-box {
+        padding: 1.2rem;
+    }
+
+    pre {
+        font-size: 0.85rem;
+        padding: 0.85rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .browser-toolbar {
+        align-items: flex-start;
+    }
+
+    .browser-dots {
+        display: none;
+    }
+
+    .lab1-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        padding: 1rem 4%;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .back-home-btn {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.75rem;
+    }
+
+    .toggle-btn,
+    .mode-btn {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+/* ================= Smooth Scroll & Partner Intro Section ================= */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Transparent navbar at top of homepage so the gradient flows seamlessly behind it */
+.navbar.home-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.navbar.home-navbar.scrolled {
+    background-color: rgba(7, 27, 43, 0.95);
+    border-bottom: 1px solid rgba(185, 228, 232, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Outer scroll track creates scroll room while the intro stays pinned in place */
+.intro-scroll-track {
+    position: relative;
+    height: 175vh;
+}
+
+.partner-intro {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5.5rem 2rem 3rem;
+    /* Logo-inspired ambient palette (soft gold + royal plum + subtle orange) melting into #071B2B */
+    background:
+        radial-gradient(ellipse 38% 36% at 24% 46%, rgba(212, 170, 102, 0.20) 0%, transparent 72%),
+        radial-gradient(ellipse 42% 40% at 50% 42%, rgba(148, 72, 188, 0.30) 0%, rgba(242, 118, 46, 0.08) 46%, transparent 74%),
+        radial-gradient(ellipse 36% 36% at 78% 46%, rgba(22, 125, 141, 0.22) 0%, transparent 72%),
+        radial-gradient(ellipse 65% 40% at 50% 0%, rgba(240, 230, 250, 0.14) 0%, transparent 70%),
+        linear-gradient(180deg, #1d1633 0%, #141930 46%, #0a1b2d 80%, #071B2B 100%);
+    will-change: opacity;
+}
+
+.partner-intro-content {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    will-change: transform;
+}
+
+.intro-eyebrow {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #e9dff5;
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(224, 210, 245, 0.26);
+    padding: 0.42rem 1.35rem;
+    border-radius: 50px;
+    margin-bottom: 3rem;
+    backdrop-filter: blur(6px);
+}
+
+/* Larger, optically balanced frameless partner logos */
+.partner-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.8rem;
+}
+
+.partner-logo {
+    width: auto;
+    object-fit: contain;
+    display: block;
+    background: transparent;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.partner-logo:hover {
+    transform: translateY(-4px) scale(1.04);
+}
+
+/* Individual optical sizing + soft ambient lift so dark logo text reads clearly without boxes */
+.logo-cpf {
+    height: 132px;
+    max-width: 260px;
+    filter: brightness(1.22) contrast(1.08) drop-shadow(0 0 12px rgba(255, 245, 225, 0.34));
+}
+
+.logo-agf {
+    height: 112px;
+    max-width: 360px;
+    filter: brightness(1.22) contrast(1.1) drop-shadow(0 0 14px rgba(255, 245, 255, 0.36));
+}
+
+.logo-42 {
+    height: 104px;
+    max-width: 300px;
+    filter: drop-shadow(0 0 14px rgba(185, 228, 232, 0.3));
+}
+
+.logo-divider {
+    font-size: 2.4rem;
+    font-weight: 200;
+    color: rgba(235, 225, 245, 0.28);
+    user-select: none;
+}
+
+/* Balanced, clean typography with subtle highlights */
+.intro-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(238, 238, 238, 0.82);
+    max-width: 780px;
+    line-height: 1.85;
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: 2.8rem;
+    letter-spacing: 0.2px;
+}
+
+.intro-subtitle .highlight-text {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.scroll-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.78rem 1.9rem;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(224, 210, 245, 0.34);
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.98rem;
+    backdrop-filter: blur(6px);
+    transition: all 0.25s ease;
+}
+
+.scroll-cue:hover {
+    background-color: rgba(148, 72, 188, 0.26);
+    border-color: var(--accent-ice);
+    box-shadow: 0 0 18px rgba(185, 228, 232, 0.38);
+    transform: translateY(2px);
+}
+
+.scroll-arrow {
+    display: inline-block;
+    animation: gentleBounce 1.8s infinite;
+}
+
+@keyframes gentleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+}
+
+/* Labs Section Scroll Reveal Wrapper */
+.labs-reveal {
+    position: relative;
+    z-index: 3;
+    margin-top: -75vh;
+    min-height: 100vh;
+    padding-top: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.labs-reveal .hero,
+.labs-reveal .cards-grid,
+.labs-reveal .card {
+    will-change: opacity, transform;
+}
+
+/* Updated Footer Typography */
+.footer-main {
+    color: var(--accent-ice);
+    font-size: 0.92rem;
+    margin-bottom: 0.3rem;
+}
+
+.footer-sub {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+/* Mobile Adjustments for Partner Intro */
+@media (max-width: 768px) {
+    .partner-intro {
+        padding: 5rem 1.2rem 2.5rem;
+    }
+
+    .intro-eyebrow {
+        margin-bottom: 1.8rem;
+        font-size: 0.78rem;
+    }
+
+    .partner-logos {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .logo-divider {
+        display: none;
+    }
+
+    .logo-cpf {
+        height: 95px;
+    }
+
+    .logo-agf {
+        height: 82px;
+        max-width: 260px;
+    }
+
+    .logo-42 {
+        height: 76px;
+    }
+
+    .intro-subtitle {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nowrap {
+        white-space: normal;
+    }
+}

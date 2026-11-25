@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: DOM-Based Open Redirect - Vulno42</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">🛡️ Vulno42</a>
+        <a href="index.html" class="back-home-btn">← Back to Home</a>
+    </nav>
+
+    <main class="lab-container">
+        <!-- Lab Header -->
+        <header class="lab-header">
+            <h1>DOM-Based Open Redirect</h1>
+            <div class="lab-badges">
+                <a class="badge lab-badge-link" href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/" target="_blank" rel="noopener noreferrer">OWASP A01:2021 — Broken Access Control ↗</a>
+                <a class="badge lab-badge-link" href="https://cwe.mitre.org/data/definitions/601.html" target="_blank" rel="noopener noreferrer">CWE-601 — URL Redirection to Untrusted Site ↗</a>
+            </div>
+        </header>
+
+        <!-- Section 1: Theory (What & Why) -->
+        <article class="article-content">
+            <section class="article-section">
+                <h2>1. What is it?</h2>
+                <p>DOM-Based Open Redirect is a client-side vulnerability that occurs when JavaScript uses an untrusted URL parameter to redirect users without proper validation. Attackers can exploit this behavior to send users from a trusted website to a malicious destination.</p>
+            </section>
+            <section class="article-section">
+                <h2>2. Why it matters?</h2>
+                <p>Attackers can abuse trusted website links to redirect users to phishing pages, making malicious URLs appear legitimate. In 2014, a security issue known as Covert Redirect highlighted how unsafe redirect handling in OAuth authentication flows could expose users to phishing and unauthorized access risks.</p>
+            </section>
+        </article>
+
+        <!-- Section 2: The Interactive Sandbox -->
+        <section class="sandbox-area" aria-label="Interactive redirect sandbox">
+            <div class="toggle-container" role="group" aria-label="Security mode">
+                <button type="button" id="vuln-btn" class="toggle-btn active-vuln" aria-pressed="true">🔴 Vulnerable Mode</button>
+                <button type="button" id="fixed-btn" class="toggle-btn" aria-pressed="false">🟢 Fixed Mode</button>
+            </div>
+
+            <div class="code-and-action">
+                <div class="code-box">
+                    <h2>The Code</h2>
+                    <pre><code id="code-display" aria-live="polite"></code></pre>
+                    <p class="code-explanation" id="code-explanation"></p>
+                </div>
+
+                <div class="action-box">
+                    <h2>3. Try it (Payloads)</h2>
+                    <p class="section-intro">Use the same payload in both modes to compare results:</p>
+                    <div class="payload-buttons">
+                        <button type="button" class="payload-btn" data-payload="safe">P1 — Safe internal path</button>
+                        <button type="button" class="payload-btn" data-payload="external">P2 — External phishing URL</button>
+                        <button type="button" class="payload-btn" data-payload="protocol">P3 — Protocol-relative URL</button>
+                    </div>
+
+                    <form class="redirect-form" id="redirect-form">
+                        <label for="redirect-input">Custom next parameter</label>
+                        <input id="redirect-input" type="text" placeholder="Enter /dashboard or an external URL" spellcheck="false" autocomplete="off" aria-describedby="redirect-hint" maxlength="1000">
+                        <p id="redirect-hint" class="safe-note">Examples: /dashboard or https://example.org/fake-login</p>
+                        <div class="lab1-actions">
+                            <button type="submit" class="payload-btn">▶ Test Redirect</button>
+                            <button type="button" class="payload-btn" id="reset-btn">↺ Reset</button>
+                        </div>
+                    </form>
+
+                    <h2>Browser Preview</h2>
+                    <div class="browser-preview" aria-label="Safe simulated browser">
+                        <div class="browser-toolbar">
+                            <span class="browser-dots" aria-hidden="true">● ● ●</span>
+                            <span class="browser-address" id="browser-address">https://vulno42.local/login</span>
+                        </div>
+                        <div class="browser-content">
+                            <h3 id="browser-heading">Waiting for action</h3>
+                            <p id="browser-message">No navigation will take place. This is a local preview.</p>
+                        </div>
+                    </div>
+
+                    <h2>Simulation Result</h2>
+                    <div id="simulation-output" class="output-box" role="status" aria-live="polite">Waiting for action...</div>
+
+                    <h2 class="trace-heading">Attack Trace</h2>
+                    <ol id="attack-trace" class="trace-list" aria-live="polite">
+                        <li>Select a payload, then click Test Redirect to see the decision steps.</li>
+                    </ol>
+                    <p class="safe-note">Safety: no external navigation, network requests, or real phishing pages are used.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Sources -->
+        <section class="sources-section">
+            <h3>Sources</h3>
+            <ul>
+                <li><a href="https://oauth.net/advisories/2014-1-covert-redirect/" target="_blank" rel="noopener noreferrer">OAuth Security Advisory 2014.1 — Covert Redirect</a></li>
+                <li><a href="https://portswigger.net/web-security/dom-based/open-redirection" target="_blank" rel="noopener noreferrer">PortSwigger — DOM-based open redirection</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-main"><strong>Vulno42</strong> &mdash; 42 Advanced Digital Skills Program (Cybersecurity Track)</p>
+        <p class="footer-sub">Crown Prince Foundation &amp; Abdulla Al Ghurair Foundation &bull; Powered by 42 Irbid &bull; November 2026</p>
+    </footer>
+
+    <script src="lab1.js"></script>
+</body>
+</html>

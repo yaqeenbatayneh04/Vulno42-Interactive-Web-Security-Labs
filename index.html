@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulno42 Security Sandbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar (Transparent at top on homepage, solid on scroll) -->
+    <nav class="navbar home-navbar">
+        <!-- Logo acts as a home link -->
+        <a href="index.html" class="logo">🛡️ Vulno42</a>
+    </nav>
+
+    <!-- Sticky Scroll Track: Pins the intro while it fades out with scroll -->
+    <div id="intro-track" class="intro-scroll-track">
+        <section id="partner-intro" class="partner-intro">
+            <div class="partner-intro-content">
+                <span class="intro-eyebrow">42 Advanced Digital Skills Program &bull; Final Project</span>
+
+                <div class="partner-logos">
+                    <img src="assets/cpf-logo.png" alt="Crown Prince Foundation Logo" class="partner-logo logo-cpf">
+                    <span class="logo-divider" aria-hidden="true">|</span>
+                    <img src="assets/agf-logo.webp" alt="Abdulla Al Ghurair Foundation Logo" class="partner-logo logo-agf">
+                    <span class="logo-divider" aria-hidden="true">|</span>
+                    <img src="assets/42-irbid-logo.png" alt="42 Irbid Logo" class="partner-logo logo-42">
+                </div>
+
+                <p class="intro-subtitle">
+                    A <span class="highlight-text">Cybersecurity Track</span> project supported by the
+                    <span class="highlight-text nowrap">Crown Prince Foundation</span> and the
+                    <span class="highlight-text nowrap">Abdulla Al Ghurair Foundation</span>,
+                    powered by <span class="highlight-text nowrap">42 Irbid</span>.
+                </p>
+
+                <a href="#labs-section" id="explore-labs-btn" class="scroll-cue">
+                    <span>Explore the Labs</span>
+                    <span class="scroll-arrow">↓</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Labs Wrapper (Reveals smoothly only after the intro fades out completely) -->
+    <div id="labs-section" class="labs-reveal">
+        <!-- Hero Section -->
+        <header class="hero">
+            <span class="badge">Interactive Web Security Labs</span>
+            <h1>Explore, Exploit, and Secure</h1>
+            <p>
+                Welcome to our interactive cybersecurity sandbox. Pick a vulnerability below to inspect the flawed code, trigger a live browser simulation, and test the patch in real time.
+            </p>
+        </header>
+
+        <!-- Vulnerability Labs Grid -->
+        <main class="container">
+            <div class="cards-grid">
+
+                <!-- Lab 1 Card: Open Redirect (Easy) -->
+                <a href="lab1.html" class="card" data-lab="Lab 01">
+                    <div class="card-header">
+                        <span class="abbr-badge">OR</span>
+                        <span class="difficulty-tag easy">Easy</span>
+                    </div>
+                    <h2>DOM-Based Open Redirect</h2>
+                    <p>
+                        Manipulate unvalidated URL parameters processed by client-side scripts to silently redirect users toward untrusted external domains.
+                    </p>
+                    <div class="card-footer">
+                        <span>Launch Sandbox</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Lab 2 Card: ReDoS (Medium) -->
+                <a href="lab2.html" class="card" data-lab="Lab 02">
+                    <div class="card-header">
+                        <span class="abbr-badge">ReDoS</span>
+                        <span class="difficulty-tag medium">Medium</span>
+                    </div>
+                    <h2>Regular Expression DoS</h2>
+                    <p>
+                        Exploit inefficient regular expressions with crafted input strings, forcing catastrophic backtracking that freezes the user's browser tab.
+                    </p>
+                    <div class="card-footer">
+                        <span>Launch Sandbox</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Lab 3 Card: Prototype Pollution (Hard) -->
+                <a href="lab3.html" class="card" data-lab="Lab 03">
+                    <div class="card-header">
+                        <span class="abbr-badge">CSPP</span>
+                        <span class="difficulty-tag hard">Hard</span>
+                    </div>
+                    <h2>Client-Side Prototype Pollution</h2>
+                    <p>
+                        Inject properties into JavaScript's base object prototype, altering application logic and hijacking execution flows directly in the browser.
+                    </p>
+                    <div class="card-footer">
+                        <span>Launch Sandbox</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-main"><strong>Vulno42</strong> &mdash; 42 Advanced Digital Skills Program (Cybersecurity Track)</p>
+        <p class="footer-sub">Crown Prince Foundation &amp; Abdulla Al Ghurair Foundation &bull; Powered by 42 Irbid &bull; November 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
